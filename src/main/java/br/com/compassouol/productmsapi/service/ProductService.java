@@ -12,4 +12,6 @@ public interface ProductService {
 
 	Optional<ProductModelResponse> atualizar(UUID id, ProductInputModelRequest request);
 
+	Optional<ProductModelResponse> buscarPorID(UUID id);
+
 }

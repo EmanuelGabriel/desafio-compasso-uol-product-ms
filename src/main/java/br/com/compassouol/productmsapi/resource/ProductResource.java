@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -59,6 +60,14 @@ public class ProductResource {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(clienteOptional.get());
+	}
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<ProductModelResponse> buscarPorID(@PathVariable("id") UUID id) {
+		LOGGER.info("Requisição recebida para buscar product por ID {}", id);
+		Optional<ProductModelResponse> clienteResponse = this.productService.buscarPorID(id);
+		return clienteResponse.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+
 	}
 
 }

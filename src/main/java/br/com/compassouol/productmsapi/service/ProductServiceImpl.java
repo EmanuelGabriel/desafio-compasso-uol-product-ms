@@ -57,4 +57,11 @@ public class ProductServiceImpl implements ProductService {
 		});
 	}
 
+	@Override
+	public Optional<ProductModelResponse> buscarPorID(UUID id) {
+		LOGGER.info("Buscar product por ID");
+		Assert.notNull(id, "ID inválido");
+		return this.productRepository.findById(id).map(this.productResponseMapper::map);
+	}
+
 }
