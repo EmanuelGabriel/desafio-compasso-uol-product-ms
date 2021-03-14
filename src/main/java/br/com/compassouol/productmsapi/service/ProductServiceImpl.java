@@ -1,5 +1,8 @@
 package br.com.compassouol.productmsapi.service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +37,24 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductModelResponse criar(ProductInputModelRequest request) {
-		LOGGER.info("Criando um registro de product");
+		LOGGER.info("Criando um product");
 		Assert.notNull(request, "Request inválida");
-		Product product = productRequestMapper.map(request);
+		Product product = this.productRequestMapper.map(request);
 		return productRepository.saveAndFlush(product).map((Product input) -> this.productResponseMapper.map(input));
+	}
+
+	@Override
+	public Optional<ProductModelResponse> atualizar(UUID id, ProductInputModelRequest request) {
+		LOGGER.info("Atualizando um product");
+		Assert.notNull(id, "ID inválido");
+
+		Product productUpdate = this.productRequestMapper.map(request);
+		return productRepository.findById(id).map(prod -> {
+			prod.setName(productUpdate.getName());
+			prod.setDescription(productUpdate.getDescription());
+			prod.setPrice(productUpdate.getPrice());
+			return this.productResponseMapper.map(this.productRepository.saveAndFlush(prod));
+		});
 	}
 
 }

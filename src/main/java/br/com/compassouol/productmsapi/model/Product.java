@@ -2,14 +2,16 @@ package br.com.compassouol.productmsapi.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.UUID;
 import java.util.function.Function;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * 
@@ -24,9 +26,13 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_cliente", updatable = false, nullable = false)
-	private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id_cliente", updatable = false, unique = true, nullable = false)
+	private UUID id;
 
 	@Column(nullable = false, length = 50)
 	private String name;
@@ -39,7 +45,7 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
-	public Product(Long id, String name, String description, BigDecimal price) {
+	public Product(UUID id, String name, String description, BigDecimal price) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -57,11 +63,11 @@ public class Product implements Serializable {
 		return function.apply(this);
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

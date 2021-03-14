@@ -1,10 +1,11 @@
 package br.com.compassouol.productmsapi.dto.response;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class ProductModelResponse {
 
-	private Long id;
+	private UUID id;
 	private String name;
 	private String description;
 	private BigDecimal price;
@@ -12,11 +13,11 @@ public class ProductModelResponse {
 	public ProductModelResponse() {
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

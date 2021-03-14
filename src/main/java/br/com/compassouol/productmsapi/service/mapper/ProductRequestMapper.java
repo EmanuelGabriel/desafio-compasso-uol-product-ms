@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 import br.com.compassouol.productmsapi.model.Product;
+import br.com.compassouol.productmsapi.service.exception.ProductNotFoundException;
 
 @Component
 public class ProductRequestMapper implements Mapper<ProductInputModelRequest, Product> {
@@ -12,18 +13,8 @@ public class ProductRequestMapper implements Mapper<ProductInputModelRequest, Pr
 	public Product map(ProductInputModelRequest input) {
 
 		if (input == null) {
-			return null; // pode ser tratado com uma exceção
+			throw new ProductNotFoundException("Produto não encontrado"); // pode ser tratado com uma exceção
 		}
-		
-		/** 
-		 	Entrada:
-		  {
-		    "name": "nome",
-		    "description": "descrição",
-		    "price": <preco>
-		  }
-		  
-		*/
 
 		Product product = new Product();
 		product.setName(input.getName());

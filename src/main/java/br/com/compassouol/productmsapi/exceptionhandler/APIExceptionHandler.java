@@ -14,6 +14,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import br.com.compassouol.productmsapi.exceptionhandler.Problema.Campo;
 import br.com.compassouol.productmsapi.exceptionhandler.ProblemaResponse.ProblemaResponseBuilder;
+import br.com.compassouol.productmsapi.service.exception.ProductNotFoundException;
 
 @ControllerAdvice
 public class APIExceptionHandler extends ResponseEntityExceptionHandler {
@@ -50,6 +52,18 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 		problema.setCampos(campos);
 
 		return super.handleExceptionInternal(ex, problema, headers, status, request);
+	}
+
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ResponseEntity<?> handleEntidadeNaoEncontradaException(ProductNotFoundException ex, WebRequest request) {
+
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		TipoProblema tipoProblema = TipoProblema.RECURSO_NAO_ENCONTRADO;
+		String detalhe = ex.getMessage();
+
+		ProblemaResponse problema = criarProblemaBuilder(status, tipoProblema, detalhe).mensagem(detalhe).build();
+
+		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
 	}
 
 	@Override
