@@ -1,18 +1,10 @@
 package br.com.compassouol.productmsapi.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
+import br.com.compassouol.productmsapi.dto.response.ProductModelResponse;
 
-/**
- * 
- * @author Emanuel Gabriel Sousa
- *
- */
+public interface ProductService {
 
-@Service
-public class ProductService {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
+	ProductModelResponse criar(ProductInputModelRequest request);
 
 }

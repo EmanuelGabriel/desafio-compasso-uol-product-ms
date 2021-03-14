@@ -2,6 +2,7 @@ package br.com.compassouol.productmsapi.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.function.Function;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +44,17 @@ public class Product implements Serializable {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+	}
+
+	/**
+	 * Pega um objeto de referência e mapea para um objeto do tipo 'Product'
+	 * 
+	 * @param function
+	 * @param <R>
+	 * @return
+	 */
+	public <R> R map(Function<Product, R> function) {
+		return function.apply(this);
 	}
 
 	public Long getId() {
