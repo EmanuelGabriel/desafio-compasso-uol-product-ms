@@ -5,6 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.compassouol.productmsapi.model.Product;
 
+/**
+ * 
+ * @author Emanuel Gabriel Sousa
+ *
+ */
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
