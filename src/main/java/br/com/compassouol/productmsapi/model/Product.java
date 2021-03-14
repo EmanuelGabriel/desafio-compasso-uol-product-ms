@@ -1,12 +1,32 @@
 package br.com.compassouol.productmsapi.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Product {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "product")
+public class Product implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente", updatable = false, nullable = false)
 	private Long id;
+
+	@Column(nullable = false, length = 50)
 	private String name;
+
+	@Column(length = 50)
 	private String description;
+
 	private BigDecimal price;
 
 	public Product() {
