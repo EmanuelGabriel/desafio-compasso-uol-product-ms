@@ -26,6 +26,22 @@ cd "diretorio de sua preferencia"
 git clone https://github.com/EmanuelGabriel/desafio-compasso-uol-product-ms.git
 ```
 
+### Execução/Construção
+
+Para construir o projeto com o Maven, executar os comando abaixo:
+
+```shell
+mvn clean install
+```
+
+O comando irá baixar todas as dependências do projeto e criar um diretório *target* com os artefatos construídos, que incluem o arquivo jar do projeto. Além disso, serão executados os testes unitários (obs.: ainda em fase de construção), e se algum falhar, o Maven exibirá essa informação no console.
+
+Para executar o projeto execute o seguinte comando:
+```shell
+mvn clean package spring-boot:run
+```
+
+
 #### Imagens:
 
 Recursos/endpoints com passagem de parâmetros
