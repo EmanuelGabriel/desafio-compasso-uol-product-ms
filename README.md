@@ -12,7 +12,7 @@ Neste microserviço deve ser possível criar, alterar, visualizar e excluir um d
 
 ### Recursos/endpoints do microserviço "desafio-compasso-uol-product-ms"
 
-# Modelo que devem ser disponibilizados
+### Modelo que devem ser disponibilizados os endpoints
 
 ![image](https://user-images.githubusercontent.com/16214525/111205439-ffa47c80-85a5-11eb-90c5-c1f1722b4c84.png)
 
