@@ -9,13 +9,13 @@ public class ProductModelResponse {
 
 	@ApiModelProperty(value = "ID do product", example = "10c8bfd4-50ee-485b-8975-99327fd4dba8")
 	private UUID id;
-	
+
 	@ApiModelProperty(value = "Name do product", example = "Ex.: Monitor")
 	private String name;
-	
+
 	@ApiModelProperty(value = "Description do product", example = "monitor vostro")
 	private String description;
-	
+
 	@ApiModelProperty(value = "Price do product", example = "10.5")
 	private BigDecimal price;
 
