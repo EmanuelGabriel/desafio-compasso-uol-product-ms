@@ -1,11 +1,14 @@
 package br.com.compassouol.productmsapi.service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -36,6 +39,13 @@ public class ProductServiceImpl implements ProductService {
 	private Mapper<Product, ProductModelResponse> productResponseMapper;
 
 	@Override
+	public Page<ProductModelResponse> buscarTodos(Pageable pageable) {
+		LOGGER.info("Buscar todos os products");
+		Assert.notNull(pageable, "Página inválida");
+		return this.productRepository.findAll(pageable).map(product -> this.productResponseMapper.map(product));
+	}
+
+	@Override
 	public ProductModelResponse criar(ProductInputModelRequest request) {
 		LOGGER.info("Criando um product");
 		Assert.notNull(request, "Request inválida");
@@ -62,6 +72,15 @@ public class ProductServiceImpl implements ProductService {
 		LOGGER.info("Buscar product por ID");
 		Assert.notNull(id, "ID inválido");
 		return this.productRepository.findById(id).map(this.productResponseMapper::map);
+	}
+
+	@Override
+	public Page<ProductModelResponse> buscarProductPorFiltro(String q, BigDecimal min_price, BigDecimal max_price,
+			Pageable pageable) {
+		LOGGER.info("Buscar product por name, description, min_price e max_price");
+
+		return this.productRepository.buscarPor(q, min_price, max_price, pageable)
+				.map(prod -> this.productResponseMapper.map(prod));
 	}
 
 }
