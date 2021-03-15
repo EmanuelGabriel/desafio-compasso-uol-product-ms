@@ -42,6 +42,7 @@ public interface ProductResource {
 	@ApiOperation(value = "Criação de um produto", notes = "Este recurso adiciona um product", response = ProductModelResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Product cadastrado"),
+            @ApiResponse(code = 400, message = "Requisição inválida (erro do cliente)"),
             @ApiResponse(code = 401, message = "Unauthorized - não autorizado"),
             @ApiResponse(code = 403, message = "Forbidden - Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 404, message = "Not found - Não encontrado"),
