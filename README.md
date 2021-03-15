@@ -54,6 +54,8 @@ Esta API de catálogo de produtos usa uma ferramenta de migração de banco de d
 
 ![image](https://user-images.githubusercontent.com/16214525/111208096-1a2c2500-85a9-11eb-9f2a-b23e2d8432c5.png)
 
+ Saiba mais sobre em https://flywaydb.org/
+ 
 O flyway é uma excelente ferramenta para versionamento de scripts de banco de dados. Por padrão, ele utiliza a tabela schema_version para fazer o gerenciamento dos scripts executados, no entanto, podemos precisar utilizar mais que uma estrutura de versionamento por exemplo: pode ser preciso versionar os scripts por cliente ou separar scripts de estrutura e dados.
 
 ![image](https://user-images.githubusercontent.com/16214525/111208273-4cd61d80-85a9-11eb-9c73-4915fa668459.png)
