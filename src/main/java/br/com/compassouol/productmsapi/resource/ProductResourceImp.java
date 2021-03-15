@@ -50,6 +50,7 @@ public class ProductResourceImp implements ProductResource {
 	@Autowired
 	private ProductService productService;
 
+	@Override
 	@GetMapping
 	public ResponseEntity<Page<ProductModelResponse>> buscarTodos(@PageableDefault(size = 5) Pageable pageable) {
 		LOGGER.info("Requisição para buscar todos os products");
@@ -58,6 +59,7 @@ public class ProductResourceImp implements ProductResource {
 
 	}
 
+	@Override
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<ProductModelResponse> criar(@Valid @RequestBody ProductInputModelRequest request) {
@@ -68,6 +70,7 @@ public class ProductResourceImp implements ProductResource {
 		return ResponseEntity.created(location).body(productModelResponse);
 	}
 
+	@Override
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<ProductModelResponse> atualizar(@PathVariable("id") UUID id,
 			@Valid @RequestBody ProductInputModelRequest request) {
@@ -81,6 +84,7 @@ public class ProductResourceImp implements ProductResource {
 		return ResponseEntity.ok(productOptional.get());
 	}
 
+	@Override
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProductModelResponse> buscarPorID(@PathVariable("id") UUID id) {
 		LOGGER.info("Requisição recebida para buscar product por ID {}", id);
@@ -89,6 +93,7 @@ public class ProductResourceImp implements ProductResource {
 
 	}
 
+	@Override
 	@GetMapping(value = "/search")
 	public ResponseEntity<Page<ProductModelResponse>> buscarPorFiltro(
 			@RequestParam(value = "q", required = false) String q,
@@ -103,6 +108,7 @@ public class ProductResourceImp implements ProductResource {
 
 	}
 
+	@Override
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> remover(@PathVariable("id") UUID id) {
 		LOGGER.info("Requisição recebida para remoção do product por ID {}", id);
