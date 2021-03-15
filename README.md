@@ -49,7 +49,7 @@ Recursos/endpoints com passagem de parâmetros
 ![image](https://user-images.githubusercontent.com/16214525/111205086-9b81b880-85a5-11eb-83bc-ae3bc5d71e39.png)
 
 
-### 
+### Versionamento de banco de dados
 Esta API de catálogo de produtos usa uma ferramenta de migração de banco de dados de código aberto chamado FLYWAY. 
 
 ![image](https://user-images.githubusercontent.com/16214525/111208096-1a2c2500-85a9-11eb-9f2a-b23e2d8432c5.png)
@@ -58,7 +58,13 @@ Esta API de catálogo de produtos usa uma ferramenta de migração de banco de d
  
 O flyway é uma excelente ferramenta para versionamento de scripts de banco de dados. Por padrão, ele utiliza a tabela schema_version para fazer o gerenciamento dos scripts executados, no entanto, podemos precisar utilizar mais que uma estrutura de versionamento por exemplo: pode ser preciso versionar os scripts por cliente ou separar scripts de estrutura e dados.
 
+### imagem:
 ![image](https://user-images.githubusercontent.com/16214525/111208273-4cd61d80-85a9-11eb-9c73-4915fa668459.png)
+
+### Banco de dados em memória (in-memory)
+Neste microserviço utiliza um sistema de gerenciamento de banco de dados relacional escrito em JAVA. Ele pode ser incorporado em aplicativos Java ou executado no modo cliente-servidor. 
+
+### imagem:
 
 
 
