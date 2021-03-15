@@ -19,9 +19,9 @@ Neste microserviço deve ser possível criar, alterar, visualizar e excluir um d
 
 #### Imagens:
 
-![image](https://user-images.githubusercontent.com/16214525/111205086-9b81b880-85a5-11eb-83bc-ae3bc5d71e39.png)
-
 Recursos/endpoints com passagem de parâmetros
+
+![image](https://user-images.githubusercontent.com/16214525/111205086-9b81b880-85a5-11eb-83bc-ae3bc5d71e39.png)
 
 
 
