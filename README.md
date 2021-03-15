@@ -17,6 +17,15 @@ Neste microserviço deve ser possível criar, alterar, visualizar e excluir um d
 ![image](https://user-images.githubusercontent.com/16214525/111205439-ffa47c80-85a5-11eb-90c5-c1f1722b4c84.png)
 
 
+## Desenvolvimento
+
+Para iniciar o projeto, é necessário clonar o projeto do GitHub num diretório de sua preferência:
+
+```shell
+cd "diretorio de sua preferencia"
+git clone https://github.com/EmanuelGabriel/desafio-compasso-uol-product-ms.git
+```
+
 #### Imagens:
 
 Recursos/endpoints com passagem de parâmetros
