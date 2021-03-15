@@ -31,6 +31,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 import br.com.compassouol.productmsapi.dto.response.ProductModelResponse;
 import br.com.compassouol.productmsapi.service.ProductService;
+import io.swagger.annotations.Api;
 
 /**
  * 
@@ -38,6 +39,8 @@ import br.com.compassouol.productmsapi.service.ProductService;
  *
  */
 
+@Api(produces = "application/json", consumes = "application/json", value = "Gerencia products", tags = {
+		"Gerencia os products" })
 @RestController
 @RequestMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductResource {
