@@ -61,10 +61,11 @@ O flyway é uma excelente ferramenta para versionamento de scripts de banco de d
 ### imagem:
 ![image](https://user-images.githubusercontent.com/16214525/111208273-4cd61d80-85a9-11eb-9c73-4915fa668459.png)
 
-### caminho:
+### Path/Caminho:
 ```shell
  /db/migration/V1__script.sql
 ```
+
 
 
 ### H2 - Banco de dados em memória (in-memory)
@@ -76,6 +77,12 @@ Neste microserviço utiliza um sistema de gerenciamento de banco de dados relaci
 ![image](https://user-images.githubusercontent.com/16214525/111209272-9410de00-85aa-11eb-87a8-89dfe78a6b4c.png)
 
 
+## Testes
+
+Este projeto ainda será criado posteriormente os testes unitários até a data de entrega do desafio. 
+:ballot_box_with_check:
+
+
 <h3>Ferramentas e tecnologias utilizadas</h3>
 
 :ballot_box_with_check: Java 11
@@ -84,14 +91,13 @@ Neste microserviço utiliza um sistema de gerenciamento de banco de dados relaci
 
 :ballot_box_with_check: Spring Data JPA
 
-:ballot_box_with_check: Swagger
+:ballot_box_with_check: Swagger e SpringFox Swagger
 
 :ballot_box_with_check: Banco de dados H2 (in-memory)
 
 :ballot_box_with_check: Modelo arquitetural REST
 
 :ballot_box_with_check: Flyway - controle de versionamento da base de dados
-
 
 
 #### Autor: Emanuel Gabriel Sousa
