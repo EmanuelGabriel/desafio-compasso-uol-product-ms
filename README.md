@@ -38,3 +38,7 @@ Recursos/endpoints com passagem de parâmetros
 :ballot_box_with_check: Banco de dados H2 (in-memory)
 
 :ballot_box_with_check: Modelo arquitetural REST
+
+:ballot_box_with_check: Flyway - controle de versionamento da base de dados
+
+
