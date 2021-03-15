@@ -61,6 +61,12 @@ O flyway é uma excelente ferramenta para versionamento de scripts de banco de d
 ### imagem:
 ![image](https://user-images.githubusercontent.com/16214525/111208273-4cd61d80-85a9-11eb-9c73-4915fa668459.png)
 
+### caminho:
+```shell
+ /db/migration/V1__script.sql
+```
+
+
 ### H2 - Banco de dados em memória (in-memory)
 Neste microserviço utiliza um sistema de gerenciamento de banco de dados relacional escrito em JAVA. Ele pode ser incorporado em aplicativos Java ou executado no modo cliente-servidor. 
 
@@ -86,4 +92,7 @@ Neste microserviço utiliza um sistema de gerenciamento de banco de dados relaci
 
 :ballot_box_with_check: Flyway - controle de versionamento da base de dados
 
+
+
+## Autor: Emanuel Gabriel Sousa
 
