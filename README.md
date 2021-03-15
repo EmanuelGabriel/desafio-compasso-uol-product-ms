@@ -79,8 +79,9 @@ Neste microserviço utiliza um sistema de gerenciamento de banco de dados relaci
 
 ## Testes
 
-Este projeto ainda será criado posteriormente os testes unitários até a data de entrega do desafio. 
 ❌ Pendente
+
+- Este projeto ainda será criado posteriormente os testes unitários até a data de entrega do desafio. 
 
 
 
