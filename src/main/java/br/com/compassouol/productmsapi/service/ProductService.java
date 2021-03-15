@@ -23,4 +23,6 @@ public interface ProductService {
 	Page<ProductModelResponse> buscarProductPorFiltro(String name, BigDecimal min_price, BigDecimal max_price,
 			Pageable pageable);
 
+	boolean remover(UUID id);
+
 }

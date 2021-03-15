@@ -83,4 +83,22 @@ public class ProductServiceImpl implements ProductService {
 				.map(prod -> this.productResponseMapper.map(prod));
 	}
 
+	@Override
+	public boolean remover(UUID id) {
+
+		LOGGER.info("Remove registro do product por ID");
+		Assert.notNull(id, "ID inválido");
+
+		try {
+
+			this.productRepository.deleteById(id);
+			return true;
+
+		} catch (Exception e) {
+			LOGGER.warn("Erro ao remover o registro do product de ID {}", id);
+		}
+
+		return false;
+	}
+
 }
