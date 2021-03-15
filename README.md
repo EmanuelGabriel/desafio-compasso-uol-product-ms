@@ -80,7 +80,8 @@ Neste microserviço utiliza um sistema de gerenciamento de banco de dados relaci
 ## Testes
 
 Este projeto ainda será criado posteriormente os testes unitários até a data de entrega do desafio. 
-:ballot_box_with_check:
+❌ Pendente
+
 
 
 <h3>Ferramentas e tecnologias utilizadas</h3>
