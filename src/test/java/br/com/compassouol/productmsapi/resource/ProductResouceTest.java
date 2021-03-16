@@ -56,7 +56,6 @@ public class ProductResouceTest {
 	}
 	
 
-
 	@Test
 	@DisplayName("Deve lançar erro de validação quando não houver dados suficientes para criação de um product")
 	public void criarProductInvalidoTest() {
