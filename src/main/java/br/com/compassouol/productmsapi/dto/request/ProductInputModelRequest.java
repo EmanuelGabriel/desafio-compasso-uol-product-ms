@@ -23,6 +23,12 @@ public class ProductInputModelRequest {
 	public ProductInputModelRequest() {
 	}
 
+	public ProductInputModelRequest(String name, String description, BigDecimal price) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+	}
+
 	public String getName() {
 		return name;
 	}
