@@ -23,7 +23,7 @@ import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 //@WebMvcTest(controllers = ProductResource.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@DisplayName("Teste de ProductResource")
+@DisplayName("Teste da classe de ProductResource")
 public class ProductResouceTest {
 
 	private static final String RESOURCE_PATH = "/products";
@@ -33,21 +33,21 @@ public class ProductResouceTest {
 	
 	@Autowired
 	private ObjectMapper objectMapper;
+	
 
 	@Test
 	@DisplayName("Deve exibir todos os products cadastrados")
 	public void deveExibirTodosProducts() throws Exception {
-
-		mockMvc.perform(get(RESOURCE_PATH)).andExpect(status().isOk());
-
+		mockMvc.perform(get(RESOURCE_PATH))
+			.andExpect(status().isOk());
 	}
 	
 	@Test
 	@DisplayName("Deve criar um novo product")
 	public void deveCriarNovoProduct() throws Exception {
 		
-		ProductInputModelRequest product = new ProductInputModelRequest("Caneta azul", "descrição da caneta azul", BigDecimal.valueOf(6.70));
-        
+		ProductInputModelRequest product = novoProduct();
+		
 		mockMvc.perform(post(RESOURCE_PATH)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.accept(MediaType.APPLICATION_JSON_VALUE)
@@ -66,5 +66,8 @@ public class ProductResouceTest {
 	}
 	
 	
+	private ProductInputModelRequest novoProduct() {
+		return new ProductInputModelRequest("Caneta azul", "descrição da caneta azul", BigDecimal.valueOf(6.70));
+	}
 
 }
