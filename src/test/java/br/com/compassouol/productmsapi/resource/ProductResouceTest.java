@@ -23,6 +23,7 @@ import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 //@WebMvcTest(controllers = ProductResource.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@DisplayName("Teste de ProductResource")
 public class ProductResouceTest {
 
 	private static final String RESOURCE_PATH = "/products";
