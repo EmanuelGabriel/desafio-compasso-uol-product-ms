@@ -81,7 +81,7 @@ public class ProductResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProductModelResponse> buscarPorID(@PathVariable("id") UUID id) {
-		LOGGER.info("Requisição recebida para buscar product por ID {}", id);
+		LOGGER.info("Requisição recebida para buscar um product por ID {}", id);
 		Optional<ProductModelResponse> clienteResponse = this.productService.buscarPorID(id);
 		return clienteResponse.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 

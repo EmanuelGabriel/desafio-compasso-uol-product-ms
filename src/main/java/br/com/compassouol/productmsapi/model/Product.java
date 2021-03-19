@@ -26,12 +26,9 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "id_cliente", updatable = false, unique = true, nullable = false)
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "id_cliente", updatable = false, unique = true, nullable = false)
 	private UUID id;
 
 	@Column(nullable = false, length = 50)

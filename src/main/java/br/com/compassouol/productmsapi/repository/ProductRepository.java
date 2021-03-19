@@ -20,6 +20,7 @@ import br.com.compassouol.productmsapi.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
+	
 
 	Page<Product> findByNameAndDescription(String name, String description, Pageable pageable);
 
