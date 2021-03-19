@@ -26,12 +26,9 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    @Column(name = "id_cliente", updatable = false, unique = true, nullable = false)
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "id_cliente", updatable = false, unique = true, nullable = false)
 	private UUID id;
 
 	@Column(nullable = false, length = 50)
@@ -45,8 +42,7 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
-	public Product(UUID id, String name, String description, BigDecimal price) {
-		this.id = id;
+	public Product(String name, String description, BigDecimal price) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -118,6 +114,11 @@ public class Product implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
 	}
 
 }

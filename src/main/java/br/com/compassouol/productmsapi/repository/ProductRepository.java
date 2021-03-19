@@ -21,10 +21,6 @@ import br.com.compassouol.productmsapi.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
 
-	Page<Product> findByNameAndDescription(String name, String description, Pageable pageable);
-
-	Page<Product> findByPriceBetweenOrderByPrice(BigDecimal min_price, BigDecimal max_price, Pageable pageable);
-
 	@Query("SELECT p FROM Product p WHERE p.price BETWEEN :min_price AND :max_price OR p.name LIKE %:q% OR p.description LIKE %:q% ORDER BY p.price")
 	Page<Product> buscarPor(@Param("q") String q, @Param("min_price") BigDecimal min_price,
 			@Param("max_price") BigDecimal max_price, Pageable pageable);

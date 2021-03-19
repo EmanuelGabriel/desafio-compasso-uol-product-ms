@@ -105,6 +105,4 @@ public interface ProductResource {
 	    })
 	 ResponseEntity<Void> remover(@ApiParam(name = "id", value = "ID do product", required = true, example = "36544a7a-872b-4468-968d-0d2fabd2c6u3") @PathVariable("id") UUID id);
 
-
-	
 }
