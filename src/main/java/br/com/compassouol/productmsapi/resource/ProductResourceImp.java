@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -95,11 +94,8 @@ public class ProductResourceImp implements ProductResource {
 
 	@Override
 	@GetMapping(value = "/search")
-	public ResponseEntity<Page<ProductModelResponse>> buscarPorFiltro(
-			@RequestParam(value = "q", required = false) String q,
-			@RequestParam(value = "min_price", required = false) BigDecimal min_price,
-			@RequestParam(value = "max_price", required = false) BigDecimal max_price,
-			@PageableDefault(size = 5) Pageable pageable) {
+	public ResponseEntity<Page<ProductModelResponse>> buscarPorFiltro(String q, BigDecimal min_price,
+			BigDecimal max_price, Pageable pageable) {
 
 		LOGGER.info("Requisição recebida para buscar product por filtro");
 		Page<ProductModelResponse> pageProductResponse = this.productService.buscarProductPorFiltro(q, min_price,

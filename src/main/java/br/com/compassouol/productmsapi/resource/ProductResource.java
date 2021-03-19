@@ -77,20 +77,20 @@ public interface ProductResource {
 	 ResponseEntity<ProductModelResponse> buscarPorID(@ApiParam(name = "id", value = "ID do product", required = true, example = "36544a7a-872b-4468-968d-0d2fabd2c6u3") @PathVariable("id") UUID id);
 	 
 	 
-	 @ApiOperation(value = "Lista de produtos filtrados", notes = "Este recurso lista os produtos filtrados de acordo com query parameters", response = ProductModelResponse.class)
+	 @ApiOperation(value = "Lista de produtos com filtros", notes = "Este recurso lista os produtos filtrados de acordo com query parameters", response = ProductModelResponse.class)
 	    @ApiResponses(value = {
 	            @ApiResponse(code = 200, message = "OK"),
 	            @ApiResponse(code = 400, message = "Requisição inválida (erro do cliente)"),
 	            @ApiResponse(code = 401, message = "Unauthorized - não autorizado"),
-	            @ApiResponse(code = 403, message = "Forbidden - Você não tem permissão para acessar este recurso"),
+	            @ApiResponse(code = 403, message = "Forbidden - Cliente não tem permissão para acessar este recurso"),
 	            @ApiResponse(code = 404, message = "Not found - Não encontrado"),
 	            @ApiResponse(code = 500, message = "O servidor encontrou um erro não previsto")
 	    })
 	 ResponseEntity<Page<ProductModelResponse>> buscarPorFiltro(
 			 @ApiParam(name = "q", value = "filtrar por name e description", required = false, example = "name, description") @RequestParam(value = "q", required = false) String q,
 			 @ApiParam(name = "min_price", value = "menor preço", required = false, example = "10.5") @RequestParam(value = "min_price", required = false) BigDecimal min_price,
-			 @ApiParam(name = "max_price", value = "maior preço", required = true, example = "50")	@RequestParam(value = "max_price", required = false) BigDecimal max_price,
-				@PageableDefault(size = 5) Pageable pageable);
+			 @ApiParam(name = "max_price", value = "maior preço", required = false, example = "50")	@RequestParam(value = "max_price", required = false) BigDecimal max_price,
+				@PageableDefault(page = 0, size = 5) Pageable pageable);
 	 
 	 
 	 
