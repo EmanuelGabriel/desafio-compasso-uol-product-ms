@@ -49,7 +49,7 @@ public class ProductResource {
 	private ProductService productService;
 
 	@GetMapping
-	public ResponseEntity<Page<ProductModelResponse>> buscarTodos(@PageableDefault(size = 5, direction = Direction.ASC) Pageable pageable) {
+	public ResponseEntity<Page<ProductModelResponse>> buscarTodos(@PageableDefault(page = 0, size = 5, direction = Direction.ASC) Pageable pageable) {
 		LOGGER.info("Requisição para buscar todos os products");
 		Page<ProductModelResponse> productsResponse = this.productService.buscarTodos(pageable);
 		return ResponseEntity.ok(productsResponse);

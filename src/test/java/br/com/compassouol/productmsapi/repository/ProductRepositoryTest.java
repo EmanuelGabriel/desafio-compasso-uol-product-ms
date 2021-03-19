@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.compassouol.productmsapi.model.Product;
@@ -29,33 +27,29 @@ import br.com.compassouol.productmsapi.model.Product;
 public class ProductRepositoryTest {
 
 	@Autowired
-	private TestEntityManager entityManager;
-
-	@Autowired
 	private ProductRepository productRepository;
-	
 
 	@Test
-	@DisplayName("Deve retornar verdadeiro ao encontrar name e description")
-	public void deveBuscarPorNameAndDescription() {
+	@DisplayName("Deve buscar um product por seu nome com sucesso")
+	public void deveBuscarProductPorNameSucesso() {
 
 		// Cenário
-		String name = "Nome";
-		String description = "descrição";
-		Pageable pageable = Pageable.unpaged();
-		Page<Product> nameDescription = this.productRepository.findByNameAndDescription(name, description, pageable);
+		String nameProduct = "Motorola G8";
 
-		assertThat(nameDescription.getContent()).isEmpty();
+		Page<Product> pageProduct = this.productRepository.buscarPor(nameProduct, null, null, null);
+
+		assertThat(pageProduct.getContent().get(0).getName()).isEqualTo(nameProduct);
 
 	}
+
 
 	@Test
 	@DisplayName("Teste de criação de um novo Product")
 	public void criarProductSucesso() {
 
-		Product product = criarProduct();
+		Product product = criarNovoProduct();
 
-		Product resultProduct = this.entityManager.persist(product);
+		Product resultProduct = this.productRepository.save(product);
 
 		assertThat(this.productRepository.findById(resultProduct.getId()).get()).isEqualTo(product);
 		assertThat(resultProduct).isNotNull();
@@ -67,9 +61,8 @@ public class ProductRepositoryTest {
 		assertThat(resultProduct.getPrice()).isNotNull();
 
 	}
-	
 
-	private Product criarProduct() {
+	private Product criarNovoProduct() {
 		return new Product("Pincel", "Marcador de quadro", BigDecimal.valueOf(6.70));
 	}
 }
