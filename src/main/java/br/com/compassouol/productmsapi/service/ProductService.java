@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 import br.com.compassouol.productmsapi.dto.response.ProductModelResponse;
+import br.com.compassouol.productmsapi.model.Product;
 
 public interface ProductService {
 
@@ -24,5 +25,9 @@ public interface ProductService {
 			Pageable pageable);
 
 	boolean remover(UUID id);
+
+	Page<Product> findByGlobalPaginado(String busca, int numeroPagina, String sortCampo, String sorDir);
+
+	Iterable<Product> findByProductGlobal(String busca);
 
 }

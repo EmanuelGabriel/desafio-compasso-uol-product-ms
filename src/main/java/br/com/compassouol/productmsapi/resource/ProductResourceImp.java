@@ -23,12 +23,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.compassouol.productmsapi.dto.request.ProductInputModelRequest;
 import br.com.compassouol.productmsapi.dto.response.ProductModelResponse;
+import br.com.compassouol.productmsapi.model.Product;
 import br.com.compassouol.productmsapi.service.ProductService;
 import io.swagger.annotations.Api;
 
@@ -102,6 +104,22 @@ public class ProductResourceImp implements ProductResource {
 				max_price, pageable);
 		return ResponseEntity.ok(pageProductResponse);
 
+	}
+
+	@GetMapping(value = "page/paginado")
+	public ResponseEntity<Page<Product>> buscarPorTodosCampos(
+			@RequestParam(value = "busca", required = false) String busca,
+			@RequestParam(value = "numeroPagina", required = false) int numeroPagina,
+			@RequestParam(value = "sortCampo", required = false) String sortCampo,
+			@RequestParam(value = "sortDir", required = false) String sortDir) {
+		Page<Product> pageProduct = productService.findByGlobalPaginado(busca, numeroPagina, sortCampo, sortDir);
+		return ResponseEntity.ok(pageProduct);
+	}
+
+	@GetMapping(value = "page")
+	public ResponseEntity<Iterable<Product>> buscarPor(@RequestParam(value = "busca", required = false) String busca) {
+		var buscaProduct = productService.findByProductGlobal(busca);
+		return buscaProduct != null ? ResponseEntity.ok(buscaProduct) : ResponseEntity.ok().build();
 	}
 
 	@Override

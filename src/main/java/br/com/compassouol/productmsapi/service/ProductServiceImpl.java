@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -50,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
 		LOGGER.info("Criando um product");
 		Assert.notNull(request, "Request inválida");
 		Product product = this.productRequestMapper.map(request);
-		return productRepository.saveAndFlush(product).map((Product input) -> this.productResponseMapper.map(input));
+		return productRepository.save(product).map((Product input) -> this.productResponseMapper.map(input));
 	}
 
 	@Override
@@ -63,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
 			prod.setName(productUpdate.getName());
 			prod.setDescription(productUpdate.getDescription());
 			prod.setPrice(productUpdate.getPrice());
-			return this.productResponseMapper.map(this.productRepository.saveAndFlush(prod));
+			return this.productResponseMapper.map(this.productRepository.save(prod));
 		});
 	}
 
@@ -99,6 +100,27 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		return false;
+	}
+
+	public Iterable<Product> findByProductGlobal(String busca) {
+		LOGGER.info("Buscando product por seus campos {}", busca);
+		if (busca != null) {
+			return productRepository.buscarPor(busca);
+		}
+		return productRepository.findAll();
+	}
+
+	@Override
+	public Page<Product> findByGlobalPaginado(String busca, int numeroPagina, String sortCampo, String sortDir) {
+		LOGGER.info("Buscando product por seus campos paginados {}", busca);
+
+		Pageable pageable = PageRequest.of(numeroPagina, 5);
+
+		if (busca != null) {
+			productRepository.buscarPaginado(busca, pageable);
+		}
+
+		return productRepository.findAll(pageable);
 	}
 
 }
