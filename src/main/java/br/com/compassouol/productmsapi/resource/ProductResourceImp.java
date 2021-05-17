@@ -55,8 +55,8 @@ public class ProductResourceImp implements ProductResource {
 	@GetMapping
 	public ResponseEntity<Page<ProductModelResponse>> buscarTodos(@PageableDefault(size = 5) Pageable pageable) {
 		LOGGER.info("Requisição para buscar todos os products");
-		Page<ProductModelResponse> productsResponse = this.productService.buscarTodos(pageable);
-		return ResponseEntity.ok(productsResponse);
+		Page<ProductModelResponse> productModelResponsePage = this.productService.buscarTodos(pageable);
+		return ResponseEntity.ok(productModelResponsePage);
 
 	}
 
